@@ -28,6 +28,9 @@ export default function handler(req, res) {
     case 'beauty':
       link = `${baseDomain}beauty.html?expire=${expire}`;
       break;
+    case 'psyche':
+      link = `${baseDomain}psyche.html?expire=${expire}`;
+      break;
     default:
       // 默认返回 rpi
       link = `${baseDomain}index.html?expire=${expire}`;
@@ -35,6 +38,7 @@ export default function handler(req, res) {
   
   res.status(200).send(link);
 }
+
 
 
 
