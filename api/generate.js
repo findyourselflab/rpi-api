@@ -1,17 +1,33 @@
 export default function handler(req, res) {
+  // 设置CORS头（可选，方便调试）
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  
   // 计算30分钟后的时间戳（秒）
   const expire = Math.floor(Date.now() / 1000) + 30 * 60;
   
-  // 从查询参数中获取 type，默认为 'old'
-  const type = req.query.type || 'old';
+  // 从查询参数中获取 test 类型，默认为 'rpi'（保持旧测试兼容）
+  const test = req.query.test || 'rpi';
+  
+  // 基础域名（请替换为您的实际GitHub Pages域名）
+  const baseDomain = 'https://findyourselflab.github.io/cc/';
   
   let link;
-  if (type === 'new') {
-    // 新测试页面的地址（请将“新文件名.html”替换为您实际的文件名）
-    link = `https://findyourselflab.github.io/cc/cpcityindex.html?expire=${expire}`;
-  } else {
-    // 旧测试页面的地址
-    link = `https://findyourselflab.github.io/cc/index.html?expire=${expire}`;
+  switch (test) {
+    case 'rpi':
+      // 旧测试（RPI恋爱占有欲）—— 假设首页就是 index.html
+      link = `${baseDomain}index.html?expire=${expire}`;
+      break;
+    case 'city':
+      // 天选之城测试
+      link = `${baseDomain}cpcityindex.html?expire=${expire}`;
+      break;
+    case 'talent':
+      // 天赋自测
+      link = `${baseDomain}tianfu.html?expire=${expire}`;
+      break;
+    default:
+      // 默认返回 rpi
+      link = `${baseDomain}index.html?expire=${expire}`;
   }
   
   res.status(200).send(link);
