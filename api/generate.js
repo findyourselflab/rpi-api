@@ -25,8 +25,8 @@ export default function handler(req, res) {
       // 天赋自测
       link = `${baseDomain}tianfu.html?expire=${expire}`;
       break;
-    case 'Beauty':
-      link = `${baseDomain}Beauty.html?expire=${expire}`;
+    case 'beauty':
+      link = `${baseDomain}beauty.html?expire=${expire}`;
       break;
     default:
       // 默认返回 rpi
@@ -35,6 +35,7 @@ export default function handler(req, res) {
   
   res.status(200).send(link);
 }
+
 
 
 
