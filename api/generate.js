@@ -13,15 +13,15 @@ export default function handler(req, res) {
   
   let link;
   switch (test) {
-    case 'rpi':
+    case 'index':
       // 旧测试（RPI恋爱占有欲）—— 假设首页就是 index.html
       link = `${baseDomain}index.html?expire=${expire}`;
       break;
-    case 'city':
+    case 'cpcityindex':
       // 天选之城测试
       link = `${baseDomain}cpcityindex.html?expire=${expire}`;
       break;
-    case 'talent':
+    case 'tianfu':
       // 天赋自测
       link = `${baseDomain}tianfu.html?expire=${expire}`;
       break;
@@ -32,3 +32,4 @@ export default function handler(req, res) {
   
   res.status(200).send(link);
 }
+
